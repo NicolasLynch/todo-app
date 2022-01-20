@@ -1,38 +1,346 @@
-.App {
-  text-align: center;
+*{
+	box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.background-image{
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	left: 0;
+	min-width: 1440px;														/* Este es el tamaño de la imagen de fondo. No queiro que se achique menos que esto */
+	width: 100%;															/* Si la pantalla es más grande que 1440px, que la imagen tenga el ancho de la pantalla. De esta forma evto los bordes blancos en las pantallas gigantes */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app{
+	max-width: 37em;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 1.2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 5em;
+	margin-bottom: 1em;
 }
 
-.App-link {
-  color: #61dafb;
+.title{
+	display: inline-block;
+	font-size: 3rem;
+	color: hsl(0, 0%, 98%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.theme-icon{
+	display: inline-block;
+	height: 2em;
+	cursor: pointer;
 }
+
+.input{
+	height: 3.3em;
+	width: 100%;
+	padding-top: 0.3em;
+	padding-left: 4.2em;
+	margin-bottom: 0.5em;
+	border-radius: 0.35em;
+	background-color: hsl(0, 0%, 98%);
+	border: none;
+	color: hsl(235, 19%, 35%);
+	caret-color: hsl(220, 98%, 61%);			/* Esto cambia el color de la barra parpadeante que esta en el imput (cursor) */
+}
+
+.input-dark{
+	background-color: hsl(235, 24%, 19%);
+	color: hsl(236, 33%, 92%);
+}
+
+.ring{
+	height: 1.4em;
+	width: 1.4em;
+	background: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+	border-radius: 50em;
+}
+
+.ring-center{
+	height: 101%;
+	width: 101%;
+	background-color: hsl(0, 0%, 98%);
+	border-radius: 5em;
+	transform: scale(0.75);
+}
+
+.ring-center-dark{
+	background-color: hsl(235, 24%, 19%);
+}
+
+
+.ring-center-view{
+	display: none;
+}
+
+.icon-check{
+	position: absolute;
+	top: 0.4em;
+	left: 0.31em;
+	width: 60%;
+}
+
+.ring-input-position{
+	position: relative;
+	top: -2.85em;
+	left: 1.3em;
+	display: inline-block;
+} 
+
+.ring-task-position{										
+	position: relative;
+	display: inline-block;
+	cursor: pointer
+}
+
+.content{
+	overflow: hidden;
+	border-radius: 0.35em;
+}
+
+
+
+.info-tasks{
+	display: flex;
+	align-items: center;
+	height: 2.8em;
+	width: 100%;
+	padding: 0em 1.3em;
+	padding-top: 0.24em;
+	justify-content: space-between;
+	background-color: hsl(0, 0%, 98%);
+}
+
+.info-tasks-dark{
+	background-color: hsl(235, 24%, 19%);
+}
+
+.container-itemsleft-left{											/* Sin esto, cada vez que se sume un decimal al numero total, se me moveran un digito a la derecha los botones de opciones. Con esta estiqueta extra soluciono este problema  */
+	width: 5em;
+}
+
+.items-left{
+	width: 10em;
+	color: hsl(236, 9%, 61%);
+}
+
+.items-left-dark{
+	color: hsl(234, 11%, 52%);
+}
+
+.options{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 13em;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.all, 
+.active,
+.complete,
+.clear{
+	font-weight: 700;
+	cursor: pointer;
+	color: hsl(236, 9%, 61%);	
+}
+
+.all-dark, 
+.active-dark,
+.complete-dark,
+.clear-dark{
+	color: hsl(234, 11%, 52%);	
+}
+
+.all:hover,
+.active:hover,
+.complete:hover,
+.clear:hover{														/* Cuando paso el mouse sobre estos elemetos, que me los subraye */ 
+	text-decoration: underline 0.2em hsl(220, 98%, 61%);
+	color: hsl(235, 19%, 35%);  
+}
+
+.all-dark:hover,
+.active-dark:hover,
+.complete-dark:hover,
+.clear-dark:hover{													/* Cuando paso el mouse sobre estos elemetos, que me los subraye */ 
+	color: hsl(236, 33%, 92%);
+}
+
+.blue{
+	text-decoration: underline 0.2em;
+	color: hsl(220, 98%, 61%);
+}
+
+.task{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 0em 1.3em;
+	background-color: hsl(0, 0%, 98%);
+	border-top: hsl(233, 11%, 84%) 1px solid;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.task-dark{
+	background-color: hsl(235, 24%, 19%);
+	border-top: hsl(237, 14%, 26%) 1px solid;
+}
+
+.task-text{
+	display: inline-block;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+	color: hsl(235, 19%, 35%);
+}
+
+.task-text-dark{
+	color: hsl(236, 33%, 92%)
+}
+
+.task-text-complete{
+	text-decoration: line-through;
+	color: hsl(236, 9%, 61%);
+}
+
+.task-text-complete-dark{
+	color: hsl(233, 14%, 35%);
+}
+
+.icon-delete{
+	display: inline-block;
+	margin-left: auto;
+	cursor: pointer;
+}
+
+
+
+
+/* _____version movil_____ */
+
+@media screen and (max-width: 735px) {												
+
+	.background-image{
+		min-width: 0;												
+	}
+	
+	.app{
+		padding: 0 6.7%;
+		font-size: 1rem;
+	}
+	
+	.header{
+		padding-top: 2em;
+		margin-bottom: 0.7em;
+	}
+	
+	.title{
+		font-size: 1.7rem;
+	}
+	
+	.theme-icon{
+		position: relative;
+		top: -0.25em;
+		height: 1.4em;
+	}
+	
+	.ring-center{
+		height: 100%;
+		width: 100%;
+	}
+	
+	.content{
+		position: relative;
+		top: -1.3em;
+		border-radius: 0 0 0.35em 0.35em;
+	}
+	
+	.info-tasks{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		row-gap: 1em;
+		height: inherit;
+		padding: 0 0;
+		background-color: inherit;
+	}
+	
+	.container-itemsleft-left{										
+		grid-column: 1 / 2;								
+		grid-row: 2 / 3;
+		width: inherit;
+		padding: 0 1.3em;
+		background-color: hsl(0, 0%, 98%);	
+		border-top-left-radius: 0.35em;
+	}
+	
+	.container-itemsleft-left-dark{											/* Tuve que crear esta clase Dark entre otras porque en la vercion de escritorio muchos elementos heredaban los colores dark por su caja padre. En la vercion movil no puedo usar la caja padre y por ende debo crear clases Dark para las cajas hijas */
+		background-color: hsl(235, 24%, 19%)
+	}
+
+	.items-left{
+		width: inherit;
+	}
+	
+	.options{
+		grid-column: 1 / 3;								
+		grid-row: 1 / 2;
+		width: inherit;
+		padding: 0 3.5em;
+		border-radius: 0.35em;
+		background-color: hsl(0, 0%, 98%);
+	}
+	
+	.options-dark{															
+		background-color: hsl(235, 24%, 19%);
+	}
+
+	.clear {																
+		grid-column: 2 / 3;								
+		grid-row: 2 / 3;
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		height: 100%;
+		padding: 0 1.3em;
+		margin: 0;
+		border-top-right-radius: 0.35em;
+		background-color: hsl(0, 0%, 98%);
+	}
+	
+	.clear-dark {															
+		background-color: hsl(235, 24%, 19%);
+	}
+
+	.clear:hover{															
+		text-decoration: none;
+		color: hsl(234, 11%, 52%);
+	}
+	
+
+
+
+
+	
+	
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
