@@ -1,14 +1,3 @@
-// Ponerle las clases de modo oscuro al aro central y al y al text-complete-dark
-
-
-
-
-
-// RECORDAR que la información que almacena el localStorage es un array que contiene las tareas en forma de objetos.  Ej: [{},{},{}]
-
-
-
-
 import React, { useState, useEffect } from 'react'
 
 import './App.css';
@@ -19,11 +8,8 @@ import Options from './components/Options';
 import Tasks from './components/Tasks';
 
 
-
-
 const App = () => {
-
-
+	
 	// Obtener la lista de tareas del localStorage
 	const getLocalItems = () => {															// Esta funcion se usara más adelante para pasarle la informacion al state items apenas se habra la página. Apenas se habre la página web, si hay información en localStorage, más precisamente en la key "lists", se guarda esa información en este mismo state "items". De no haber nada porque se borro todo o porque es la primera vez que el usuario entra, se coloca un [] como información (un array vacio). // RECORDAR que la información que almacena el localStorage es un array que contiene las tareas en forma de objetos.  Ej: [{},{},{}]  
 		let list = localStorage.getItem('lists');
@@ -45,7 +31,7 @@ const App = () => {
 			return JSON.parse(localStorage.getItem('darkTheme'))
 
 		}else { 
-			return false;
+			return true;
 		}
 	}
 
